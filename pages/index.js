@@ -36,7 +36,7 @@ export default function Recipes({ recipes }) {
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px 60px;
 
-            @media screen and (max-width: 480px) {
+            @media all and (max-width: 414px) {
               grid-template-columns: 1fr;
             }
           }
