@@ -1,6 +1,7 @@
 import { createClient } from "contentful"
 import Image from 'next/image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Skeleton from "../../components/Skeleton"
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -22,7 +23,12 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false
+    fallback: true
+    // when falbac is set tu true, and user is trying to
+    // get the page that doesnt exist yet (new recepie was added in CMS)
+    // it will return the fallback version of this component and will 
+    //generate it on the fly and then save this page on server fro future visits
+    // it will rerun getStaticProps func on the fly
   }
 }
 
@@ -43,12 +49,15 @@ export const getStaticProps = async ({params}) => {
       // and no updates from CMS when adding a content
       // the number repeserents time, in this case 1 second
       // so it will check for updates from CMS every second
+      // but it only regenerate the updates on the pages that already exist
+      // not generating the new page
     }
   }
 }
 
 
 export default function RecipeDetails({recipe}) {
+  if ( !recipe ) return <Skeleton/>
 
   const { featuredImage, title, cookingTime, ingredients, method } = recipe.fields
 
