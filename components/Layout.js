@@ -4,7 +4,7 @@ export default function Layout({ children }) {
   return (
     <div className="layout">
       <header>
-        <Link href="/">
+        <Link legacyBehavior href="/">
           <a>
             <h1>
               <span>Just Add</span>

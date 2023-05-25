@@ -21,7 +21,7 @@ const RecipeCard = ({recipe}) => {
           <p>Takes approx { cookingTime } mins to make</p>
         </div>
         <div className="actions">
-          <Link href={'/recipes/' + slug}><a>Cook this</a></Link>
+          <Link legacyBehavior href={'/recipes/' + slug}><a>Cook this</a></Link>
         </div>
       </div>
 
