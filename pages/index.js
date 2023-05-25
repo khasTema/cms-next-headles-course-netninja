@@ -11,9 +11,10 @@
     const res = await client.getEntries({ content_type: 'recepie' })
     
     return {
-      props: {
-        recipes: res.items
-      }
+      props: { recipes: res.items },
+      revalidate: 1
+      // this is called ISR Incremental Static Regeneration
+      // read more about REVALIDATE in [slug].js file
     }
 
  }

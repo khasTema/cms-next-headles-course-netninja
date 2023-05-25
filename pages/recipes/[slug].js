@@ -36,7 +36,13 @@ export const getStaticProps = async ({params}) => {
 
   return {
     props: {
-      recipe: items[0]
+      recipe: items[0],
+      revalidate: 1 
+      // REVALIDATE will update info on server to update data
+      // from CMS, in other way we will get only data we first input
+      // and no updates from CMS when adding a content
+      // the number repeserents time, in this case 1 second
+      // so it will check for updates from CMS every second
     }
   }
 }
