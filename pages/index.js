@@ -35,11 +35,13 @@ export default function Recipes({ recipes }) {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px 60px;
+          }
 
-            @media all and (max-width: 414px) {
+          @media all and (max-width: 414px) {
+            .recipe-list {
               grid-template-columns: 1fr;
             }
-          }
+            }
       `}</style>
     </div>
   )
